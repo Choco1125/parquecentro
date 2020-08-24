@@ -56,7 +56,9 @@ btnEntrar.addEventListener("click", async () => {
     alerta("alerta", "danger", "Debes ingresar un tipo válido");
   } else {
     var formdata = new FormData();
-    var vehiculo = placa.value.length == 6 ? "Carro" : "Moto";
+    let ultimoDigito = placa.value[placa.value.length - 1];
+
+    var vehiculo = isNaN(parseInt(ultimoDigito)) ? "Moto" : "Carro";
     formdata.append("placa", placa.value);
     formdata.append("vehiculo", vehiculo);
     formdata.append("precio", precio.value);
